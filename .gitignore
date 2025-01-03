@@ -1,0 +1,7 @@
+*.exe
+*.zip
+*.o
+salida.txt
+*.bin
+error_log.txt
+example.c
