@@ -1,7 +1,6 @@
-*.exe
-*.zip
 *.o
-salida.txt
-*.bin
+*.exe
+*.elf
+*.a
+.vscode
 error_log.txt
-example.c
