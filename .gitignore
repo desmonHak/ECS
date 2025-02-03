@@ -2,5 +2,6 @@
 *.exe
 *.elf
 *.a
-.vscode
 error_log.txt
+*.i
+*.s

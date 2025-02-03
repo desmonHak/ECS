@@ -91,6 +91,7 @@ Entity(Enemy)* createEnemy(uint32_t position) {
 }
 
 int main(int argc, char *argv[]) {
+    __constructor_debug_c__();
     Entity(Enemy)* enemig = createEnemy(0x1234);
     dump_entidad(enemig, 4);
 
@@ -98,20 +99,31 @@ int main(int argc, char *argv[]) {
     call_system(enemig, -> Render);
     
     /*
-     * crear una entidad generica de forma dinamica con 4 componentes
+     * crear una entidad generica de forma dinamica con 2 componentes
      */
     Component_t* entidad = NULL;
-    entidad = createEntity((Entity *)&entidad, 4);
+    entidad = createEntity((Entity *)&entidad, 2);
     printf("entidad %p size de tipos %zubytes\n", entidad, sizeof(type_data));
     
     if (entidad == NULL) {
         printf("componentes es NULL\n");
         return 0;
     }
-    assign_component(entidad, 0, System_func,   System(Render));
-    assign_component(entidad, 1, Number,        0xabcdef12);
-    assign_component(entidad, 2, Floating,      12.2324);
-    assign_component(entidad, 3, String,        "hola mundo");
+
+    printf("Memoria de la entidad inicia en : %p\n", entidad);
+    printf("Memoria de la entidad finaliza en : %p\n", entidad  + sizeof(Component_t)*2);
+    assign_component(entidad, 0, create_data_component(System_func, System(Render)));
+    assign_component(entidad, 1, create_data_component(Number,      0xabcdef12));
+
+    dump_entidad(entidad, 2);
+
+    // apartir de aqui, para añadir mas valores a la entidad, es necesario redimensionarla:
+    puts("Reasignando la memoria de la entidad");
+    reallocEntity(&entidad, 2, 4);
+    printf("Memoria de la entidad inicia en : %p\n", entidad);
+    printf("Memoria de la entidad finaliza en : %p\n", entidad  + sizeof(Component_t)*4);
+    assign_component(entidad, 2, create_data_component(Floating,    12.2324));
+    assign_component(entidad, 3, create_data_component(String,      "hola mundo"));
 
     dump_entidad(entidad, 4);
 
@@ -125,6 +137,19 @@ int main(int argc, char *argv[]) {
     printf("entidad[0].data.System_func -> %p\n",  entidad[0].data.System_func);
 
 
-    puts("Adios");
+    Component_t* entidad2 = NULL;
+    entidad2 = createEntity((Entity *)&entidad2, 11);
+    entidad2 = reallocEntity((Entity *)&entidad2, 11, 500);
+    //entidad2 = reallocEntity((Entity *)&entidad2, 50, 60);
+    printf("entidad2 = %p", entidad2);
+    for (int i = 12; i-1 < 50; i++) {
+        //reallocEntity((Entity *)&entidad2, i - 1, i);
+        /*los valores estallan por ser el limitador 0xffffffffffffffff*/
+        assign_component(entidad2,  i-1, create_data_component(Number, 0xffffffffffffffff));
+        printf("entidad2[%d].data.Number      -> %llx\n", i-1, entidad2[i-1].data.Number);
+        dump_entidad(entidad2,  i-1);
+    }
+
+puts("Adios");
     return 0;
 }

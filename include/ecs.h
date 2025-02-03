@@ -39,6 +39,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "debug_c.h"
+
 typedef void* Entity;
 
 /*
@@ -59,6 +61,8 @@ typedef void* Entity;
                                     uint16_t  final_;               \
                                 } Entity(name)
 
+
+
 /* relacionar ES (Entidad-Sistema) */
 #define relate_es(now_entity, now_system)                           \
     now_entity->now_system.type_data = System_func;                 \
@@ -75,13 +79,6 @@ typedef void* Entity;
 /* llamar al sistema de un ECS */
 #define call_system(ecs, system) ((void (*)(void*))(ecs system.data.System_func))(ecs);
 
-#define assign_component(name, position, type_data_, data_) \
-    name[position] = (Component_t){                         \
-        .type_data = type_data_,                            \
-        .data = {                                           \
-            .type_data_ = data_                             \
-        }                                                   \
-    };
 typedef enum type_data_emum {
         System_func,
         Number,
@@ -91,16 +88,18 @@ typedef enum type_data_emum {
                         que no sea los anterior mencionados*/
 } type_data_emum;
 
+typedef union data_component
+{
+    void*    System_func;   /* System_func */
+    uint64_t      Number;   /* Number */
+    long double Floating;   /* Floating */
+    const char*   String;   /* String */
+    void*       Unkownod;   /* Unkownod */
+} data_component;
+
 typedef struct type_data {
     type_data_emum type_data;
-    union data
-    {
-        void*    System_func;   /* System_func */
-        uint64_t      Number;   /* Number */
-        long double Floating;   /* Floating */
-        const char*   String;   /* String */
-        void*       Unkownod;   /* Unkownod */
-    } data;
+    data_component data;
 } type_data, Component_t;
 
 /* tipo de dato para cada componente en una entidad */
@@ -114,6 +113,41 @@ typedef struct advanzed_data {
 #else
 #define debug_ecs(...) 
 #endif
+
+#define create_data_component(type_data_, data_) type_data_, (data_component){.type_data_ = data_}
+
+static inline void assign_component(
+        Component_t* name, 
+        size_t position, 
+        type_data_emum type_data_, 
+        data_component data_
+    ) {
+    name[position] = (Component_t){
+        .type_data = type_data_,
+        .data = data_
+    };
+}
+
+
 Component_t get_type_data(advanzed_data* data);
+void dump_entidad(void* self, uint16_t number_data);
+Entity* createEntity(Entity** self, uint16_t number_data);
+Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_data);
+
+#ifndef report_error_ecs
+    #ifdef USE_ASSERT_ECS
+    #define report_error_ecs(condition, code_exit, ...) \
+        assert(condition);                                        \
+        code_exit
+    #else
+    #define report_error_ecs(condition, code_exit, ...)                  \
+        if (!(condition)) {                                                   \
+            fprintf(stderr, "[File: %s, Line: %d] ", __FILE__, __LINE__);     \
+            fprintf(stderr, __VA_ARGS__);                                     \
+            code_exit                                                         \
+        }
+    #endif
+#endif
+
 
 #endif /* ECS_H */

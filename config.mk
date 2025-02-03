@@ -38,4 +38,8 @@ CFLAGS_DEBUG  =  $(GLOBAL_CFLAGS) -ggdb -fno-asynchronous-unwind-tables  	      
 
 ARR_FLAGS     = -rc
 
-OBJECTS = 	ecs.o
+CFLAGS_EXAMPLES_DEBUG = $(CFLAGS_DEBUG) -x c  -time  -save-temps $(LINKER_FLAGS)
+CFLAGS_EXAMPLES = $(CFLAGS) -x c  -time  -save-temps $(LINKER_FLAGS)
+
+OBJECTS = 	ecs.o 
+OBJECTS_DEBUG = ecs_debug.o 
