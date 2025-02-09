@@ -139,12 +139,16 @@ int main(int argc, char *argv[]) {
 
     Component_t* entidad2 = NULL;
     entidad2 = createEntity((Entity *)&entidad2, 11);
-    entidad2 = reallocEntity((Entity *)&entidad2, 11, 500);
+    printf("(createEntity)entidad2 = %p\n", entidad2);
+    //entidad2 = reallocEntity((Entity *)&entidad2, 11, 500);
     //entidad2 = reallocEntity((Entity *)&entidad2, 50, 60);
-    printf("entidad2 = %p\n", entidad2);
+    printf("(reallocEntity)entidad2 = %p\n", entidad2);
     for (int i = 12; i-1 < 50; i++) {
-        //reallocEntity((Entity *)&entidad2, i - 1, i);
-        /*los valores estallan por ser el limitador 0xffffffffffffffff*/
+        // fix error: es necesario redimensionar la entidad antes de agregar componentes via reallocEntity y
+        // obtener el puntero obtenido de reallocEntity, en caso de que no se haya obtenido el puntero de reallocEntity,
+        // la funcion fallara.
+        entidad2 = reallocEntity((Entity *)&entidad2, i - 1, i); // auto redimensionar la entidad
+        /* ¿ los valores estallan por ser el limitador 0xffffffffffffffff ?  (aparentemente no) */
         assign_component(entidad2,  i-1, create_data_component(Number, 0xffffffffffffffff));
         printf("entidad2[%d].data.Number      -> %llx\n", i-1, entidad2[i-1].data.Number);
         dump_entidad(entidad2,  i-1);

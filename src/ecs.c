@@ -145,21 +145,22 @@ Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_d
             TYPE_DATA_DBG(size_t, "new_number_data = %zu")
         END_TYPE_FUNC_DBG,
         self, old_number_data, new_number_data);
+
     /*
      * retornar una estructura con campos nulos implica que o hubo un error al hacer realloc, o no
      * se redimensiono el tamaño
      */
     if (self == NULL) return NULL;
-
     if (old_number_data < new_number_data) {
-        unsigned char* _self = (unsigned char*)realloc(*self, sizeof(Component_t) * new_number_data);
+        
+        unsigned char* _self = (unsigned char*)realloc(*(void**)self, sizeof(Component_t) * new_number_data);
         report_error_ecs(
             _self != NULL,  // si esto no ocurrio
                 return NULL; // codigo que ejecutar
             , "Error: no se pudo reasignar la memoria debido a que realloc fallo\n"
         );
         DEBUG_PRINT(DEBUG_LEVEL_INFO, "Datos redimnsionado a %zu Bytes\n", new_number_data);
-
+        
         // poner los valores desconocidos unicamente en la nueva memoria redimensionaada
         memset(_self + sizeof(Component_t) * old_number_data, 
             Unkownod, sizeof(Component_t) * (new_number_data - old_number_data));
@@ -169,7 +170,9 @@ Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_d
 
         // indicar el nuevo final de la entidad
         *(uint16_t*)((void*)_self + ((sizeof(Component_t) * new_number_data) )) = 0xffff;
+        return (Entity*)_self;
     } else {
+        puts("c");
         report_error_ecs(
             false,  // si es false, se solicita que ocurra este raise
                 return NULL; // codigo que ejecutar
