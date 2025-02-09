@@ -1,3 +1,11 @@
+/**
+ * @file ecs.h
+ * @brief Implementación de un sistema Entity-Component-System (ECS)
+ * @author Desmon (David)
+ * @date 2023
+ * @license Apache License, Version 2.0 with Modification
+*/
+
 /*
  *	Licencia Apache, Versión 2.0 con Modificación
  *	
@@ -28,7 +36,7 @@
  *	Queda explícitamente establecido que no es obligatorio especificar ni notificar los 
  *	cambios realizados entre versiones, ni revelar porciones específicas de código 
  *	modificado.
- */
+*/
 
 #ifndef ECS_H
 #define ECS_H
@@ -45,64 +53,93 @@ typedef void* Entity;
 
 /*
  * ECS = Entidad-Componente-Sistema
- */
+*/
 
 #define Entity(name)    name ##_Entity
 #define System(name)    name ##_System
 #define Component(name) name ##_Component
 
-/*
- * uint16_t  final_: todo sistema tiene un miembro final(debe estar siempre en
- *      el final de la estructura) que permite saber el final de los componentes
- *      de una entidad y el valor siempre debe ser 0xffff.
- */
+/**
+ * @brief   Macro para crear una estructura de entidad. 
+ *          uint16_t  final_: todo sistema tiene un miembro final(debe estar siempre en
+ *          el final de la estructura) que permite saber el final de los componentes
+ *          de una entidad y el valor siempre debe ser 0xffff.
+ * @param name Nombre de la entidad
+ * @param ... Componentes de la entidad
+*/
 #define build_entity(name, ...) typedef struct Entity(name) {       \
                                 __VA_ARGS__                         \
                                     uint16_t  final_;               \
                                 } Entity(name)
 
 
-
-/* relacionar ES (Entidad-Sistema) */
+/**
+ * @brief Macro para relacionar una entidad con un sistema. ES (Entidad-Sistema)
+ * @param now_entity Entidad actual
+ * @param now_system Sistema a relacionar
+*/
 #define relate_es(now_entity, now_system)                           \
     now_entity->now_system.type_data = System_func;                 \
     now_entity->now_system.data.System_func = System(now_system)
 
-/*
- * Las entidades deben finalizar con un 0xffff que indica el
- * final de los componentes en la entidad.
- */
+/**
+ * @brief Macro para inicializar una entidad. Las entidades deben finalizar 
+ *          con un 0xffff que indica el final de los componentes en la entidad.
+ * @param name Nombre de la entidad
+ * @param ... Inicialización de los componentes
+*/
 #define make_entity(name, ...) \
     __VA_ARGS__                \
     name->final_ = 0xffff
 
-/* llamar al sistema de un ECS */
+/**
+ * @brief Macro para llamar a un sistema de un ECS. 
+ * @param ecs Entidad-Componente-Sistema
+ * @param system Sistema a llamar
+*/
 #define call_system(ecs, system) ((void (*)(void*))(ecs system.data.System_func))(ecs);
 
+/**
+ * @enum type_data_emum
+ * @brief Enumeración de los tipos de datos de los componentes
+*/
 typedef enum type_data_emum {
-        System_func,
-        Number,
-        Floating,
-        String,
-        Unkownod    /* se usa para indicar cualquier estado
+        System_func,    /** < Función de sistema        */
+        Number,         /** < Número entero             */
+        Floating,       /** < Número de punto flotante  */
+        String,         /** < Cadena de caracteres      */
+        Object,         /** < Objeto                    */   
+        Unkownod        /** < Tipo desconocido. se usa para indicar cualquier estado
                         que no sea los anterior mencionados*/
 } type_data_emum;
 
+/**
+ * @union data_component
+ * @brief Unión que almacena los diferentes tipos de datos de los componentes
+*/
 typedef union data_component
 {
-    void*    System_func;   /* System_func */
-    uint64_t      Number;   /* Number */
-    long double Floating;   /* Floating */
-    const char*   String;   /* String */
-    void*       Unkownod;   /* Unkownod */
+    void*    System_func;   /* System_func*/
+    uint64_t      Number;   /* Number*/
+    long double Floating;   /* Floating*/
+    const char*   String;   /* String*/
+    void*         Object;   /* Objects */
+    void*       Unkownod;   /* Unkownod*/
 } data_component;
 
+/**
+ * @struct type_data
+ * @brief Estructura que representa un componente
+*/
 typedef struct type_data {
-    type_data_emum type_data;
-    data_component data;
+    type_data_emum type_data;   /** < Tipo de dato del componente*/
+    data_component data;        /** < Datos del componente*/
 } type_data, Component_t;
 
-/* tipo de dato para cada componente en una entidad */
+/**
+ * @struct advanzed_data
+ * @brief Estructura para manejar datos avanzados de componentes. Tipo de dato para cada componente en una entidad
+*/
 typedef struct advanzed_data {
     Component_t     *ptr;
     size_t        offset;
@@ -114,8 +151,20 @@ typedef struct advanzed_data {
 #define debug_ecs(...) 
 #endif
 
+/**
+ * @brief Macro para crear un componente de datos
+ * @param type_data_ Tipo de dato del componente
+ * @param data_ Datos del componente
+*/
 #define create_data_component(type_data_, data_) type_data_, (data_component){.type_data_ = data_}
 
+/**
+ * @brief Asigna un componente a una entidad
+ * @param name Nombre de la entidad
+ * @param position Posición del componente
+ * @param type_data_ Tipo de dato del componente
+ * @param data_ Datos del componente
+*/
 static inline void assign_component(
         Component_t* name, 
         size_t position, 
@@ -128,19 +177,63 @@ static inline void assign_component(
     };
 }
 
-
+/**
+ * @brief Obtiene los datos de un componente
+ * @param data Puntero a la estructura advanzed_data que contiene la información del componente
+ * @return Estructura Component_t con los datos del componente
+*/
 Component_t get_type_data(advanzed_data* data);
+
+/**
+ * @brief Imprime en hexadecimal los datos de una entidad
+ * @param self Puntero a la entidad
+ * @param number_data Número de componentes de la entidad /
+*/
 void dump_entidad(void* self, uint16_t number_data);
+
+/**
+ * @brief Crea una nueva entidad
+ * @param self Puntero doble donde se almacenará la entidad creada
+ * @param number_data Número de componentes que tendrá la entidad
+ * @return Puntero a la entidad creada, o NULL en caso de error
+*/
 Entity* createEntity(Entity** self, uint16_t number_data);
+
+/**
+ * @brief Redimensiona una entidad existente
+ * @param self Puntero doble a la entidad a redimensionar
+ * @param old_number_data Número actual de componentes de la entidad
+ * @param new_number_data Nuevo número de componentes deseado
+ * @return Puntero a la entidad redimensionada, o NULL en caso de error
+*/
 Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_data);
 
+/**
+ * @brief Libera la memoria de una entidad y sus componentes
+ * 
+ * @param entity Puntero a la entidad que se desea liberar
+ */
+void freeEntity(void* entity);
+
+/**
+ * @brief Macro para reportar errores en el sistema ECS
+ * Esta macro proporciona una forma consistente de manejar y reportar errores en el sistema ECS.
+ * Dependiendo de la definición de USE_ASSERT_ECS, utilizará assert o un bloque condicional personalizado.
+ * @param condition La condición que se debe cumplir. Si es falsa, se considera un error.
+ * @param code_exit Código que se ejecutará si la condición es falsa (solo en modo no assert).
+ * @param ... Mensaje de error formateado y sus argumentos (solo en modo no assert).
+ * @note Si USE_ASSERT_ECS está definido, se utilizará la función assert de la biblioteca estándar.
+ *      En caso contrario, se imprimirá un mensaje de error personalizado con información del archivo y línea.
+ * @example
+ *      report_error_ecs(ptr != NULL, return NULL;, "Error: puntero nulo detectado\n");
+*/
 #ifndef report_error_ecs
     #ifdef USE_ASSERT_ECS
-    #define report_error_ecs(condition, code_exit, ...) \
-        assert(condition);                                        \
+    #define report_error_ecs(condition, code_exit, ...)                       \
+        assert(condition);                                                    \
         code_exit
     #else
-    #define report_error_ecs(condition, code_exit, ...)                  \
+    #define report_error_ecs(condition, code_exit, ...)                       \
         if (!(condition)) {                                                   \
             fprintf(stderr, "[File: %s, Line: %d] ", __FILE__, __LINE__);     \
             fprintf(stderr, __VA_ARGS__);                                     \
@@ -150,4 +243,4 @@ Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_d
 #endif
 
 
-#endif /* ECS_H */
+#endif /* ECS_H*/

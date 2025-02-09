@@ -28,7 +28,7 @@
  *	Queda explícitamente establecido que no es obligatorio especificar ni notificar los 
  *	cambios realizados entre versiones, ni revelar porciones específicas de código 
  *	modificado.
- */
+*/
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -128,7 +128,7 @@ type_data get_type_data(advanzed_data* data) {
             printf("uint64_t %llx\n", data_get->data.ui64); 
             break;
         default:          
-            /* en caso de un miembro ser 0xffffffffffffffff se finaliza el programa */
+            /* en caso de un miembro ser 0xffffffffffffffff se finaliza el programa*/
             if (data_get->data.func == (void*)-1) return (type_data){.data = 0, .type_data = 0};
             printf("desconocido %p\n", data_get->data.func); 
             break;
@@ -184,7 +184,7 @@ Entity createEntity(Entity* self, uint16_t number_data){
      * de la misma manera. En caso de que mismas entidades tengan los datos en distintos
      * lugares, no se podan situar de forma correcta al 100%.
      * 
-     */
+    */
     if (self == NULL) return NULL;
     
     Entity _self = *self;

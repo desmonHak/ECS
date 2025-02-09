@@ -1,3 +1,11 @@
+/**
+ * @file ecs.c
+ * @brief Implementación de las funciones del sistema Entity-Component-System (ECS)
+ * @author Desmon (David)
+ * @date 2023
+ * @license Apache License, Version 2.0 with Modification
+*/
+
 /*
  *	Licencia Apache, Versión 2.0 con Modificación
  *	
@@ -28,12 +36,17 @@
  *	Queda explícitamente establecido que no es obligatorio especificar ni notificar los 
  *	cambios realizados entre versiones, ni revelar porciones específicas de código 
  *	modificado.
- */
+*/
 #ifndef ECS_C
 #define ECS_C
 
 #include "ecs.h"
 
+/**
+ * @brief Obtiene los datos de un componente
+ * @param data Puntero a la estructura advanzed_data que contiene la información del componente
+ * @return Component_t Estructura con los datos del componente
+*/
 Component_t get_type_data(advanzed_data* data) {
     DEBUG_PRINT(DEBUG_LEVEL_INFO,
         INIT_TYPE_FUNC_DBG(Component_t, get_type_data)
@@ -62,6 +75,10 @@ Component_t get_type_data(advanzed_data* data) {
             data_ret = (type_data){.data = data_get->data, .type_data = data_get->type_data};
             debug_ecs("unkownod 0x%p\n", data_get->data.Unkownod); 
             break;
+        case Object:   
+            data_ret = (type_data){.data = data_get->data, .type_data = data_get->type_data};
+            debug_ecs("Object %s\n", data_get->data.Object); 
+            break;
         case String:   
             data_ret = (type_data){.data = data_get->data, .type_data = data_get->type_data};
             debug_ecs("string %s\n", data_get->data.String); 
@@ -75,7 +92,7 @@ Component_t get_type_data(advanzed_data* data) {
             debug_ecs("number 0x%llx\n", data_get->data.Number); 
             break;
         default:          
-            /* en caso de un miembro ser 0xffffffffffffffff se finaliza el programa */
+            /* en caso de un miembro ser 0xffffffffffffffff se finaliza el programa*/
             if (data_get->data.System_func == (void*)-1) return (type_data){.data = 0, .type_data = 0};
             debug_ecs("desconocido %p\n", data_get->data.System_func); 
             break;
@@ -84,6 +101,11 @@ Component_t get_type_data(advanzed_data* data) {
     return data_ret;
 }
 
+/**
+ * @brief Imprime en hexadecimal los datos de una entidad
+ * @param self Puntero a la entidad
+ * @param number_data Número de componentes de la entidad
+*/
 void dump_entidad(void* self, uint16_t number_data) {
     DEBUG_PRINT(DEBUG_LEVEL_INFO,
         INIT_TYPE_FUNC_DBG(void, dump_entidad)
@@ -97,6 +119,13 @@ void dump_entidad(void* self, uint16_t number_data) {
     }
     printf("\n");
 }
+
+/**
+ * @brief Crea una nueva entidad
+ * @param self Puntero doble donde se almacenará la entidad creada
+ * @param number_data Número de componentes que tendrá la entidad
+ * @return Entity* Puntero a la entidad creada, o NULL en caso de error
+*/
 Entity* createEntity(Entity** self, uint16_t number_data){
     DEBUG_PRINT(DEBUG_LEVEL_INFO,
         INIT_TYPE_FUNC_DBG(Entity*, createEntity)
@@ -117,7 +146,7 @@ Entity* createEntity(Entity** self, uint16_t number_data){
      * de la misma manera. En caso de que mismas entidades tengan los datos en distintos
      * lugares, no se podan situar de forma correcta al 100%.
      * 
-     */
+    */
     if (self == NULL) return NULL;
     
     Entity *_self = *self;
@@ -137,6 +166,13 @@ Entity* createEntity(Entity** self, uint16_t number_data){
     return _self;
 }
 
+/**
+ * @brief Redimensiona una entidad existente
+ * @param self Puntero doble a la entidad a redimensionar
+ * @param old_number_data Número actual de componentes de la entidad
+ * @param new_number_data Nuevo número de componentes deseado
+ * @return Entity* Puntero a la entidad redimensionada, o NULL en caso de error
+*/
 Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_data){
     DEBUG_PRINT(DEBUG_LEVEL_INFO,
         INIT_TYPE_FUNC_DBG(Entity*, reallocEntity)
@@ -149,7 +185,7 @@ Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_d
     /*
      * retornar una estructura con campos nulos implica que o hubo un error al hacer realloc, o no
      * se redimensiono el tamaño
-     */
+    */
     if (self == NULL) return NULL;
     if (old_number_data < new_number_data) {
         
@@ -171,8 +207,6 @@ Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_d
         // indicar el nuevo final de la entidad
         *(uint16_t*)((void*)_self + ((sizeof(Component_t) * new_number_data) )) = 0xffff;
         return (Entity*)_self;
-    } else {
-        puts("c");
         report_error_ecs(
             false,  // si es false, se solicita que ocurra este raise
                 return NULL; // codigo que ejecutar
@@ -180,5 +214,23 @@ Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_d
         );
     }
 }
+
+/**
+ * @brief Libera la memoria de una entidad y sus componentes
+ * 
+ * @param entity Puntero a la entidad que se desea liberar
+ */
+void freeEntity(void* entity) {
+    DEBUG_PRINT(DEBUG_LEVEL_INFO,
+        INIT_TYPE_FUNC_DBG(void, freeEntity)
+            TYPE_DATA_DBG(void*, "entity = %p")
+        END_TYPE_FUNC_DBG,
+        entity);
+    if (entity != NULL) {
+        free(entity);
+        entity = NULL;  // Evitar punteros colgantes
+    }
+}
+
 
 #endif
