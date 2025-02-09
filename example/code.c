@@ -141,7 +141,7 @@ int main(int argc, char *argv[]) {
     entidad2 = createEntity((Entity *)&entidad2, 11);
     entidad2 = reallocEntity((Entity *)&entidad2, 11, 500);
     //entidad2 = reallocEntity((Entity *)&entidad2, 50, 60);
-    printf("entidad2 = %p", entidad2);
+    printf("entidad2 = %p\n", entidad2);
     for (int i = 12; i-1 < 50; i++) {
         //reallocEntity((Entity *)&entidad2, i - 1, i);
         /*los valores estallan por ser el limitador 0xffffffffffffffff*/
