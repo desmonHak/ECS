@@ -1,4 +1,4 @@
-/*
+/**
  *	Licencia Apache, Versión 2.0 con Modificación
  *	
  *	Copyright 2023 Desmon (David)
@@ -61,7 +61,7 @@ void System(Render)(void* data) {
     printf("RenderSystem\n");
 
     // Inicializa los datos avanzados necesarios para procesar los componentes
-    advanzed_data data_init =  {
+    advanced_data data_init =  {
         .offset = 0,
         .ptr = data
     };
@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
     printf("entidad %p size de tipos %zubytes\n", entidad, sizeof(type_data));
     
     if (entidad == NULL) {
-        printf("componentes es NULL\n");
+        printf("Entidad es NULL\n");
         return 0;
     }
 
@@ -169,7 +169,7 @@ int main(int argc, char *argv[]) {
      * Crea otra entidad genérica dinámica con más componentes.
      */
     Component_t* entidad2 = NULL;
-    entidad2 = createEntity((Entity *)&entidad2, 11);
+    entidad2 = createEntity((Entity)&entidad2, 11);
     printf("(createEntity)entidad2 = %p\n", entidad2);
     //entidad2 = reallocEntity((Entity *)&entidad2, 11, 500);
     //entidad2 = reallocEntity((Entity *)&entidad2, 50, 60);
@@ -180,7 +180,7 @@ int main(int argc, char *argv[]) {
         // fix error: es necesario redimensionar la entidad antes de agregar componentes via reallocEntity y
         // obtener el puntero obtenido de reallocEntity, en caso de que no se haya obtenido el puntero de reallocEntity,
         // la funcion fallara.
-        entidad2 = reallocEntity((Entity *)&entidad2, i - 1, i); // auto redimensionar la entidad
+        entidad2 = reallocEntity((Entity)&entidad2, i - 1, i); // auto redimensionar la entidad
         /* ¿ los valores estallan por ser el limitador 0xffffffffffffffff ?  (aparentemente no)*/
         assign_component(entidad2,  i-1, create_data_component(Number, 0xffffffffffffffff));
         printf("entidad2[%d].data.Number      -> %llx\n", i-1, entidad2[i-1].data.Number);

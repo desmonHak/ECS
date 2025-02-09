@@ -49,14 +49,37 @@
 
 #include "debug_c.h"
 
+/**
+ * @brief Tipo de dato para representar una entidad
+ */
 typedef void* Entity;
 
-/*
- * ECS = Entidad-Componente-Sistema
-*/
-
+/**
+ * @brief ECS = Entidad-Componente-Sistema. Macro entidad
+ * 
+ * @code
+Entity(Enemy)* createEnemy(uint32_t position) {
+     Entity(Enemy)* enemy = (Entity(Enemy)*)malloc(sizeof(Entity(Enemy)));
+     // codigo para crear una entidad enemigo
+}
+ * @endcode
+ */
 #define Entity(name)    name ##_Entity
+
+/**
+ * @brief ECS = Entidad-Componente-Sistema. Macro Sistema
+ * 
+ * @code
+void System(Render)(void* data) {
+     // codigo del sistema de "Render"
+}
+ * @endcode
+*/
 #define System(name)    name ##_System
+
+/**
+ * @brief ECS = Entidad-Componente-Sistema. Macro Componente
+*/
 #define Component(name) name ##_Component
 
 /**
@@ -66,6 +89,15 @@ typedef void* Entity;
  *          de una entidad y el valor siempre debe ser 0xffff.
  * @param name Nombre de la entidad
  * @param ... Componentes de la entidad
+ * 
+ * @code
+build_entity( Enemy,    // nombre de la entidad
+    type_data Render;   // Componente para renderizar al enemigo
+    type_data position; // Componente para la posición del enemigo
+    type_data Spawn;    // Componente para el sistema de spawn del enemigo
+    type_data Health;   // Componente para la salud del enemigo
+);
+ * @endcode
 */
 #define build_entity(name, ...) typedef struct Entity(name) {       \
                                 __VA_ARGS__                         \
@@ -87,31 +119,62 @@ typedef void* Entity;
  *          con un 0xffff que indica el final de los componentes en la entidad.
  * @param name Nombre de la entidad
  * @param ... Inicialización de los componentes
+ * 
+ * @code
+
+    // Relaciona los sistemas con los componentes de la entidad Enemy.
+    // los enemigos tienen un sistema de renderizado, de salud y un sistema de spawing
+     
+    make_entity(enemy,
+        relate_es(enemy, Render); // Relaciona el sistema Render con el componente correspondiente
+        relate_es(enemy, Health); // Relaciona el sistema Health con el componente correspondiente
+        relate_es(enemy, Spawn);  // Relaciona el sistema Spawn con el componente correspondiente
+        // Aquí se pueden definir más componentes específicos de Enemy 
+    );
+    @endcode
 */
-#define make_entity(name, ...) \
-    __VA_ARGS__                \
-    name->final_ = 0xffff
+#define make_entity(name, ...) __VA_ARGS__ name->final_ = 0xffff
 
 /**
  * @brief Macro para llamar a un sistema de un ECS. 
  * @param ecs Entidad-Componente-Sistema
  * @param system Sistema a llamar
+ * 
+ * @code
+   // Crea una entidad Enemy y con la posición 0x1234
+    Entity(Enemy)* enemig = createEnemy(0x1234);
+    dump_entidad(enemig, 4);
+    // Llama al sistema Render asociado a la entidad Enemy 
+    call_system(enemig, -> Render);
+   
+    Component_t* entidad = createEntity((Entity *)&entidad, 2);
+    if (entidad == NULL) {
+        printf("Entidad es NULL\n");
+        return 0;
+    }
+    assign_component(entidad, 0, create_data_component(System_func, System(Render)));
+    assign_component(entidad, 1, create_data_component(Number,      0xabcdef12));
+   
+   // Llama al sistema Render asociado a la entidad con los datos de componente.
+   // [0] es la posición del componente a llamar en la entidad
+   call_system(entidad, [0]);
+ * @endcode
 */
 #define call_system(ecs, system) ((void (*)(void*))(ecs system.data.System_func))(ecs);
 
 /**
- * @enum type_data_emum
+ * @enum type_data_enum
  * @brief Enumeración de los tipos de datos de los componentes
 */
-typedef enum type_data_emum {
-        System_func,    /** < Función de sistema        */
-        Number,         /** < Número entero             */
-        Floating,       /** < Número de punto flotante  */
-        String,         /** < Cadena de caracteres      */
-        Object,         /** < Objeto                    */   
-        Unkownod        /** < Tipo desconocido. se usa para indicar cualquier estado
+typedef enum type_data_enum {
+        System_func,    /**< Función de sistema        */
+        Number,         /**< Número entero             */
+        Floating,       /**< Número de punto flotante  */
+        String,         /**< Cadena de caracteres      */
+        Object,         /**< Objeto                    */   
+        Unknowned         /**< Tipo desconocido. se usa para indicar cualquier estado
                         que no sea los anterior mencionados*/
-} type_data_emum;
+} type_data_enum;
 
 /**
  * @union data_component
@@ -119,12 +182,12 @@ typedef enum type_data_emum {
 */
 typedef union data_component
 {
-    void*    System_func;   /* System_func*/
-    uint64_t      Number;   /* Number*/
-    long double Floating;   /* Floating*/
-    const char*   String;   /* String*/
-    void*         Object;   /* Objects */
-    void*       Unkownod;   /* Unkownod*/
+    void*    System_func;   /**< System_func*/
+    uint64_t      Number;   /**< Number*/
+    long double Floating;   /**< Floating*/
+    const char*   String;   /**< String*/
+    void*         Object;   /**< Objects */
+    void*      Unknowned;    /**< Unknowned*/
 } data_component;
 
 /**
@@ -132,18 +195,18 @@ typedef union data_component
  * @brief Estructura que representa un componente
 */
 typedef struct type_data {
-    type_data_emum type_data;   /** < Tipo de dato del componente*/
-    data_component data;        /** < Datos del componente*/
+    type_data_enum type_data;   /**< Tipo de dato del componente (ver @ref type_data_enum). */
+    data_component data;        /**< Datos del componente (ver @ref data_component) */
 } type_data, Component_t;
 
 /**
- * @struct advanzed_data
+ * @struct advanced_data
  * @brief Estructura para manejar datos avanzados de componentes. Tipo de dato para cada componente en una entidad
 */
-typedef struct advanzed_data {
-    Component_t     *ptr;
-    size_t        offset;
-} advanzed_data;
+typedef struct advanced_data {
+    Component_t     *ptr;   /**< Puntero a un componente o varios (ver @ref Component_t). */
+    size_t        offset;   /**< offset del dato */
+} advanced_data;
 
 #ifdef DEBUG_ECS
 #define debug_ecs(...) printf(""  __VA_ARGS__)
@@ -160,15 +223,28 @@ typedef struct advanzed_data {
 
 /**
  * @brief Asigna un componente a una entidad
- * @param name Nombre de la entidad
+ * @param name Nombre de la entidad (ver @ref Component_t)
  * @param position Posición del componente
- * @param type_data_ Tipo de dato del componente
- * @param data_ Datos del componente
+ * @param type_data_ Tipo de dato del componente (ver @ref type_data_enum)
+ * @param data_ Datos del componente (ver @ref data_component)
+ * @note Asegúrese de que `position` esté dentro de los límites del arreglo.
+ * @warning No utilizar `position` fuera del rango válido, ya que puede causar acceso a memoria no definida.
+ * 
+ * @code
+   Component_t* entidad = createEntity((Entity *)&entidad, 2);
+   if (entidad == NULL) {
+          printf("Entidad es NULL\n");
+          return 0;
+   }
+   // Asigna valores a los dos componentes iniciales de la entidad genérica
+   assign_component(entidad, 0, create_data_component(System_func, System(Render)));
+   assign_component(entidad, 1, create_data_component(Number,      0xabcdef12));
+ * @endcode
 */
 static inline void assign_component(
         Component_t* name, 
         size_t position, 
-        type_data_emum type_data_, 
+        type_data_enum type_data_, 
         data_component data_
     ) {
     name[position] = (Component_t){
@@ -179,39 +255,52 @@ static inline void assign_component(
 
 /**
  * @brief Obtiene los datos de un componente
- * @param data Puntero a la estructura advanzed_data que contiene la información del componente
+ * @param data Puntero a la estructura advanced_data que contiene la información del componente
  * @return Estructura Component_t con los datos del componente
 */
-Component_t get_type_data(advanzed_data* data);
+Component_t get_type_data(advanced_data* data);
 
 /**
  * @brief Imprime en hexadecimal los datos de una entidad
  * @param self Puntero a la entidad
- * @param number_data Número de componentes de la entidad /
+ * @param number_data Número de componentes de la entidad
 */
 void dump_entidad(void* self, uint16_t number_data);
 
 /**
  * @brief Crea una nueva entidad
- * @param self Puntero doble donde se almacenará la entidad creada
+ * @warning Todas las entidades del mismo tipo deben seguir el mismo orden de datos.
+ * @param self Entity** Puntero doble donde se almacenará la entidad creada
  * @param number_data Número de componentes que tendrá la entidad
  * @return Puntero a la entidad creada, o NULL en caso de error
 */
-Entity* createEntity(Entity** self, uint16_t number_data);
+Entity createEntity(Entity* self, uint16_t number_data);
 
 /**
  * @brief Redimensiona una entidad existente
- * @param self Puntero doble a la entidad a redimensionar
+ * @param self Entity* Puntero doble donde se almacenará la entidad creada
  * @param old_number_data Número actual de componentes de la entidad
  * @param new_number_data Nuevo número de componentes deseado
- * @return Puntero a la entidad redimensionada, o NULL en caso de error
+ * @return Entity Puntero a la entidad redimensionada o NULL si falla la reasignación de memoria.
+ * @code
+   Entity myEntity = createEntity(&myEntity, 2); // entidad de 2 componentes
+   if (myEntity == NULL) {
+        printf("Entidad es NULL\n");
+        return 0;
+   }
+   reallocEntity(&entidad, 2, 5); // Redimensiona a 5 componentes
+ * @endcode
 */
-Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_data);
+Entity reallocEntity(Entity* self, size_t old_number_data, size_t new_number_data);
 
 /**
  * @brief Libera la memoria de una entidad y sus componentes
- * 
  * @param entity Puntero a la entidad que se desea liberar
+ * @code
+   Entity myEntity = createEntity(&myEntity, 5);
+   freeEntity(myEntity);
+   myEntity = NULL; // Para evitar dangling pointers
+ * @endcode
  */
 void freeEntity(void* entity);
 
@@ -224,8 +313,13 @@ void freeEntity(void* entity);
  * @param ... Mensaje de error formateado y sus argumentos (solo en modo no assert).
  * @note Si USE_ASSERT_ECS está definido, se utilizará la función assert de la biblioteca estándar.
  *      En caso contrario, se imprimirá un mensaje de error personalizado con información del archivo y línea.
- * @example
- *      report_error_ecs(ptr != NULL, return NULL;, "Error: puntero nulo detectado\n");
+ * @code
+        report_error_ecs(
+            ptr != NULL,                        // si el puntero es nulo
+                return NULL;                    // retorna NULL en caso de error
+            , "Error: puntero nulo detectado\n" // mensaje de error personalizado
+        );
+ * @endcode
 */
 #ifndef report_error_ecs
     #ifdef USE_ASSERT_ECS

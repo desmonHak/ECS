@@ -43,18 +43,18 @@ typedef void* HealthSystem;
 typedef void* SpwaningSystem;
 typedef void* Entity;
 
-typedef enum type_data_emum {
+typedef enum type_data_enum {
         System_func,
         uint8_t_,
         uint16_t_,
         uint32_t_,
         uint64_t_,
-        unkownod    /* se usa para indicar cualquier estado
+        Unknowned    /* se usa para indicar cualquier estado
                         que no sea los anterior mencionados*/
-} type_data_emum;
+} type_data_enum;
 
 typedef struct type_data {
-    type_data_emum type_data;
+    type_data_enum type_data;
     union data
     {
         uint8_t  ui8;
@@ -87,15 +87,15 @@ typedef struct Enemy {
     uint16_t final_;
 } Enemy;
 
-typedef struct advanzed_data {
+typedef struct advanced_data {
     type_data *ptr;
     size_t     offset;
-} advanzed_data;
+} advanced_data;
 
-type_data get_type_data(advanzed_data* data) {
+type_data get_type_data(advanced_data* data) {
     type_data data_ret = {
         .data = 0,
-        .type_data = (type_data_emum){0}
+        .type_data = (type_data_enum){0}
     };
     puts("get_type_data");
     void* ptr = NULL;
@@ -141,7 +141,7 @@ void System(Render)(void* data) {
     printf("RenderSystem\n");
 
     
-    advanzed_data data_init =  {
+    advanced_data data_init =  {
         .offset = 0,
         .ptr = data
     };
@@ -178,7 +178,7 @@ Entity createEntity(Entity* self, uint16_t number_data){
      * Se espera que self, sea una referencia donde almacenar 
      * la entidad creada si no lo fue ya.
      * 
-     * Se espera que number_data sea el numero de datos que va a lamcenar la entidad.
+     * Se espera que number_data sea el numero de datos que va a almacenar la entidad.
      * 
      * Importante: todas las entidades del mismo tipo deben darse el orden de datos
      * de la misma manera. En caso de que mismas entidades tengan los datos en distintos
@@ -194,7 +194,7 @@ Entity createEntity(Entity* self, uint16_t number_data){
             _self = NULL;
             return _self;
         }
-        memset(_self, unkownod, sizeof(type_data) * number_data + sizeof(size_t));
+        memset(_self, Unknowned, sizeof(type_data) * number_data + sizeof(size_t));
         *(size_t*)((void*)_self + ((sizeof(type_data) * number_data) + sizeof(size_t))) = -1;
     }
 

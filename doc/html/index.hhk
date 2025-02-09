@@ -1,0 +1,317 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="FrameName" value="right">
+</OBJECT>
+<UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structadvanced__data.html"><param name="Name" value="advanced_data"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a2069fdd874d45bd28b4eb7cd49519e48"><param name="Name" value="advanced_data"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a2069fdd874d45bd28b4eb7cd49519e48"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structadvanced__data.html"><param name="Name" value="advanced_data"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structadvanced__data.html#aadb6d6eb83e646653a1402032e45dcab"><param name="Name" value="offset"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structadvanced__data.html"><param name="Name" value="advanced_data"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structadvanced__data.html#ab6bfe0188bce2552a11ea0154149de96"><param name="Name" value="ptr"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ac30231933259609f97d88fac168d00fd"><param name="Name" value="assign_component(Component_t *name, size_t position, type_data_enum type_data_, data_component data_)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a9075c8c282ad8326abac626f77205155"><param name="Name" value="build_entity(name,...)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a206e27989e777f0831c3337d94088005"><param name="Name" value="call_system(ecs, system)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#aa1c52fd5ad46786ec907740999ce5887"><param name="Name" value="Component(name)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a7fb43c464e9ede60eb608851afca7ecb"><param name="Name" value="Component_t"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a17dad71c6fec5917fe4fb21a37929936"><param name="Name" value="create_data_component(type_data_, data_)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#abb1a65851848362cfaf4b74fd399a7f5"><param name="Name" value="createEntity(Entity *self, uint16_t number_data)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#abb1a65851848362cfaf4b74fd399a7f5"><param name="Name" value="ecs.c"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#abb1a65851848362cfaf4b74fd399a7f5"><param name="Name" value="createEntity(Entity *self, uint16_t number_data)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#abb1a65851848362cfaf4b74fd399a7f5"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtype__data.html#adb0fc9e9b7ce5e5f6f31c90b7fd73daf"><param name="Name" value="data"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html"><param name="Name" value="data_component"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a02217b1855aeab7e69a1b4262c6cf875"><param name="Name" value="data_component"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a02217b1855aeab7e69a1b4262c6cf875"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html"><param name="Name" value="data_component"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a0c085ce4df7dad1260ebe319a30901fa"><param name="Name" value="Floating"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html"><param name="Name" value="data_component"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a62cfa14bac30fe70209bcde9787c6953"><param name="Name" value="Number"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html"><param name="Name" value="data_component"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a8469589da6564a713bcba390308412a3"><param name="Name" value="Object"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html"><param name="Name" value="data_component"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a16ca22f4c65a9707250b569342ae2cad"><param name="Name" value="String"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html"><param name="Name" value="data_component"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#ac711e629cdd4f2f037ea900d7ed9e835"><param name="Name" value="System_func"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html"><param name="Name" value="data_component"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a3684b8be1ded1132f471842464a8c734"><param name="Name" value="Unknowned"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ae2d4c9c9af7f461449f4db9b036b32da"><param name="Name" value="debug_ecs(...)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#a199186350fc25be37db0e03dd0ce6172"><param name="Name" value="dump_entidad(void *self, uint16_t number_data)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#a199186350fc25be37db0e03dd0ce6172"><param name="Name" value="ecs.c"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a199186350fc25be37db0e03dd0ce6172"><param name="Name" value="dump_entidad(void *self, uint16_t number_data)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a199186350fc25be37db0e03dd0ce6172"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html"><param name="Name" value="ecs.c"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#abb1a65851848362cfaf4b74fd399a7f5"><param name="Name" value="createEntity(Entity *self, uint16_t number_data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html"><param name="Name" value="ecs.c"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#a199186350fc25be37db0e03dd0ce6172"><param name="Name" value="dump_entidad(void *self, uint16_t number_data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html"><param name="Name" value="ecs.c"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#aaf0209b7e83b6f2db2062f8419fa9b35"><param name="Name" value="ECS_C"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html"><param name="Name" value="ecs.c"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#af387fc28b69c7969a286f5a9ade089ff"><param name="Name" value="freeEntity(void *entity)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html"><param name="Name" value="ecs.c"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#abc631ea620470e7587309fbbabe70b62"><param name="Name" value="get_type_data(advanced_data *data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html"><param name="Name" value="ecs.c"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#a125b9cc8c0ba3bb7cf5e877347f5e28f"><param name="Name" value="reallocEntity(Entity *self, size_t old_number_data, size_t new_number_data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a2069fdd874d45bd28b4eb7cd49519e48"><param name="Name" value="advanced_data"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ac30231933259609f97d88fac168d00fd"><param name="Name" value="assign_component(Component_t *name, size_t position, type_data_enum type_data_, data_component data_)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a9075c8c282ad8326abac626f77205155"><param name="Name" value="build_entity(name,...)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a206e27989e777f0831c3337d94088005"><param name="Name" value="call_system(ecs, system)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#aa1c52fd5ad46786ec907740999ce5887"><param name="Name" value="Component(name)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a7fb43c464e9ede60eb608851afca7ecb"><param name="Name" value="Component_t"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a17dad71c6fec5917fe4fb21a37929936"><param name="Name" value="create_data_component(type_data_, data_)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#abb1a65851848362cfaf4b74fd399a7f5"><param name="Name" value="createEntity(Entity *self, uint16_t number_data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a02217b1855aeab7e69a1b4262c6cf875"><param name="Name" value="data_component"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ae2d4c9c9af7f461449f4db9b036b32da"><param name="Name" value="debug_ecs(...)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a199186350fc25be37db0e03dd0ce6172"><param name="Name" value="dump_entidad(void *self, uint16_t number_data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ac1f825271a8ade98586af88d46631bf4"><param name="Name" value="Entity"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a0a2ab36c53e84193f3aa6eaab81282df"><param name="Name" value="Entity(name)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa4815677a428e37e90c6f71f94ddd7b65"><param name="Name" value="Floating"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#af387fc28b69c7969a286f5a9ade089ff"><param name="Name" value="freeEntity(void *entity)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#abc631ea620470e7587309fbbabe70b62"><param name="Name" value="get_type_data(advanced_data *data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a535c999bc8b723790a8f747ef9bf2379"><param name="Name" value="make_entity(name,...)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aafa620f80ceb585b771a878cc135c4035"><param name="Name" value="Number"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa5df911aaca43421a25e32c3002befbc4"><param name="Name" value="Object"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a125b9cc8c0ba3bb7cf5e877347f5e28f"><param name="Name" value="reallocEntity(Entity *self, size_t old_number_data, size_t new_number_data)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a38365d38978264acb89aa017bccb6744"><param name="Name" value="relate_es(now_entity, now_system)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a10ae52c0c36b78fd589ebf87c37f5d20"><param name="Name" value="report_error_ecs(condition, code_exit,...)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aade17ec82ff106e0c2b4417f5ca231eae"><param name="Name" value="String"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a43e9373df025f2e88a0486a4265d61af"><param name="Name" value="System(name)"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa53057c3ecc0578f654d21ae87ac4353c"><param name="Name" value="System_func"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ae3bac5e66014b21e0b701301cb698923"><param name="Name" value="type_data"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1a"><param name="Name" value="type_data_enum"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#af4faadbad6c0340dd046f66e7962b2a7"><param name="Name" value="type_data_enum"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html"><param name="Name" value="ecs.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa03fa22b2ff527f9e0086025afadacf79"><param name="Name" value="Unknowned"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#aaf0209b7e83b6f2db2062f8419fa9b35"><param name="Name" value="ECS_C"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a0a2ab36c53e84193f3aa6eaab81282df"><param name="Name" value="Entity(name)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ac1f825271a8ade98586af88d46631bf4"><param name="Name" value="Entity"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a0c085ce4df7dad1260ebe319a30901fa"><param name="Name" value="Floating"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a0c085ce4df7dad1260ebe319a30901fa"><param name="Name" value="data_component"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa4815677a428e37e90c6f71f94ddd7b65"><param name="Name" value="Floating"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa4815677a428e37e90c6f71f94ddd7b65"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#af387fc28b69c7969a286f5a9ade089ff"><param name="Name" value="freeEntity(void *entity)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#af387fc28b69c7969a286f5a9ade089ff"><param name="Name" value="ecs.c"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#af387fc28b69c7969a286f5a9ade089ff"><param name="Name" value="freeEntity(void *entity)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#af387fc28b69c7969a286f5a9ade089ff"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#abc631ea620470e7587309fbbabe70b62"><param name="Name" value="get_type_data(advanced_data *data)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#abc631ea620470e7587309fbbabe70b62"><param name="Name" value="ecs.c"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#abc631ea620470e7587309fbbabe70b62"><param name="Name" value="get_type_data(advanced_data *data)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#abc631ea620470e7587309fbbabe70b62"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a535c999bc8b723790a8f747ef9bf2379"><param name="Name" value="make_entity(name,...)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a62cfa14bac30fe70209bcde9787c6953"><param name="Name" value="Number"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a62cfa14bac30fe70209bcde9787c6953"><param name="Name" value="data_component"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aafa620f80ceb585b771a878cc135c4035"><param name="Name" value="Number"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aafa620f80ceb585b771a878cc135c4035"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a8469589da6564a713bcba390308412a3"><param name="Name" value="Object"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a8469589da6564a713bcba390308412a3"><param name="Name" value="data_component"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa5df911aaca43421a25e32c3002befbc4"><param name="Name" value="Object"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa5df911aaca43421a25e32c3002befbc4"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structadvanced__data.html#aadb6d6eb83e646653a1402032e45dcab"><param name="Name" value="offset"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structadvanced__data.html#ab6bfe0188bce2552a11ea0154149de96"><param name="Name" value="ptr"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#a125b9cc8c0ba3bb7cf5e877347f5e28f"><param name="Name" value="reallocEntity(Entity *self, size_t old_number_data, size_t new_number_data)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8c.html#a125b9cc8c0ba3bb7cf5e877347f5e28f"><param name="Name" value="ecs.c"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a125b9cc8c0ba3bb7cf5e877347f5e28f"><param name="Name" value="reallocEntity(Entity *self, size_t old_number_data, size_t new_number_data)"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a125b9cc8c0ba3bb7cf5e877347f5e28f"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a38365d38978264acb89aa017bccb6744"><param name="Name" value="relate_es(now_entity, now_system)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a10ae52c0c36b78fd589ebf87c37f5d20"><param name="Name" value="report_error_ecs(condition, code_exit,...)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a16ca22f4c65a9707250b569342ae2cad"><param name="Name" value="String"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a16ca22f4c65a9707250b569342ae2cad"><param name="Name" value="data_component"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aade17ec82ff106e0c2b4417f5ca231eae"><param name="Name" value="String"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aade17ec82ff106e0c2b4417f5ca231eae"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a43e9373df025f2e88a0486a4265d61af"><param name="Name" value="System(name)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#ac711e629cdd4f2f037ea900d7ed9e835"><param name="Name" value="System_func"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#ac711e629cdd4f2f037ea900d7ed9e835"><param name="Name" value="data_component"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa53057c3ecc0578f654d21ae87ac4353c"><param name="Name" value="System_func"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa53057c3ecc0578f654d21ae87ac4353c"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtype__data.html"><param name="Name" value="type_data"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtype__data.html"><param name="Name" value="type_data"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtype__data.html#adb0fc9e9b7ce5e5f6f31c90b7fd73daf"><param name="Name" value="data"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ae3bac5e66014b21e0b701301cb698923"><param name="Name" value="type_data"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#ae3bac5e66014b21e0b701301cb698923"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtype__data.html"><param name="Name" value="type_data"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtype__data.html#a7ee5a1276dcda058b217f533c6fcf3a8"><param name="Name" value="type_data"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1a"><param name="Name" value="type_data_enum"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1a"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#af4faadbad6c0340dd046f66e7962b2a7"><param name="Name" value="type_data_enum"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#af4faadbad6c0340dd046f66e7962b2a7"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a3684b8be1ded1132f471842464a8c734"><param name="Name" value="Unknowned"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="uniondata__component.html#a3684b8be1ded1132f471842464a8c734"><param name="Name" value="data_component"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa03fa22b2ff527f9e0086025afadacf79"><param name="Name" value="Unknowned"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="ecs_8h.html#a193c7c54f3e1a85ea626883ba330ea1aa03fa22b2ff527f9e0086025afadacf79"><param name="Name" value="ecs.h"></OBJECT>
+  </UL>
+</UL>
+</BODY>
+</HTML>

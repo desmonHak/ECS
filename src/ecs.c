@@ -6,7 +6,7 @@
  * @license Apache License, Version 2.0 with Modification
 */
 
-/*
+/**
  *	Licencia Apache, Versión 2.0 con Modificación
  *	
  *	Copyright 2023 Desmon (David)
@@ -44,18 +44,18 @@
 
 /**
  * @brief Obtiene los datos de un componente
- * @param data Puntero a la estructura advanzed_data que contiene la información del componente
- * @return Component_t Estructura con los datos del componente
+ * @param data Puntero a la estructura advanced_data que contiene la información del componente
+ * @return Estructura Component_t con los datos del componente
 */
-Component_t get_type_data(advanzed_data* data) {
+Component_t get_type_data(advanced_data* data) {
     DEBUG_PRINT(DEBUG_LEVEL_INFO,
         INIT_TYPE_FUNC_DBG(Component_t, get_type_data)
-            TYPE_DATA_DBG(advanzed_data*, "data = %p")
+            TYPE_DATA_DBG(advanced_data*, "data = %p")
         END_TYPE_FUNC_DBG,
         data);
     type_data data_ret = {
         .data = 0,
-        .type_data = (type_data_emum){0}
+        .type_data = (type_data_enum){0}
     };
     debug_ecs("get_type_data");
     void* ptr = NULL;
@@ -71,9 +71,9 @@ Component_t get_type_data(advanzed_data* data) {
             data_ret = (type_data){.data = data_get->data, .type_data = data_get->type_data};
             debug_ecs("System_func (...)(*0x%p)(...,)\n", data_get->data.System_func); 
             break;
-        case Unkownod:    
+        case Unknowned:    
             data_ret = (type_data){.data = data_get->data, .type_data = data_get->type_data};
-            debug_ecs("unkownod 0x%p\n", data_get->data.Unkownod); 
+            debug_ecs("Unknowned 0x%p\n", data_get->data.Unknowned); 
             break;
         case Object:   
             data_ret = (type_data){.data = data_get->data, .type_data = data_get->type_data};
@@ -122,14 +122,15 @@ void dump_entidad(void* self, uint16_t number_data) {
 
 /**
  * @brief Crea una nueva entidad
- * @param self Puntero doble donde se almacenará la entidad creada
+ * @warning Todas las entidades del mismo tipo deben seguir el mismo orden de datos.
+ * @param self Entity* Puntero doble donde se almacenará la entidad creada
  * @param number_data Número de componentes que tendrá la entidad
- * @return Entity* Puntero a la entidad creada, o NULL en caso de error
+ * @return Puntero a la entidad creada, o NULL en caso de error
 */
-Entity* createEntity(Entity** self, uint16_t number_data){
+Entity createEntity(Entity* self, uint16_t number_data){
     DEBUG_PRINT(DEBUG_LEVEL_INFO,
-        INIT_TYPE_FUNC_DBG(Entity*, createEntity)
-            TYPE_DATA_DBG(Entity**, "self = %p")
+        INIT_TYPE_FUNC_DBG(Entity, createEntity)
+            TYPE_DATA_DBG(Entity*, "self = %p")
             TYPE_DATA_DBG(uint16_t, "number_data = %p")
         END_TYPE_FUNC_DBG,
         self, number_data);
@@ -140,7 +141,7 @@ Entity* createEntity(Entity** self, uint16_t number_data){
      * Se espera que self, sea una referencia donde almacenar 
      * la entidad creada si no lo fue ya.
      * 
-     * Se espera que number_data sea el numero de datos que va a lamcenar la entidad.
+     * Se espera que number_data sea el numero de datos que va a almacenar la entidad.
      * 
      * Importante: todas las entidades del mismo tipo deben darse el orden de datos
      * de la misma manera. En caso de que mismas entidades tengan los datos en distintos
@@ -157,7 +158,7 @@ Entity* createEntity(Entity** self, uint16_t number_data){
             return _self;
         }
         // poner la memoria como valores desconocidos
-        memset(_self, Unkownod, sizeof(Component_t) * number_data );
+        memset(_self, Unknowned, sizeof(Component_t) * number_data );
 
         // indicar el final de la entidad
         *(uint16_t*)((void*)_self + ((sizeof(Component_t) * number_data) )) = 0xffff;
@@ -168,12 +169,20 @@ Entity* createEntity(Entity** self, uint16_t number_data){
 
 /**
  * @brief Redimensiona una entidad existente
- * @param self Puntero doble a la entidad a redimensionar
+ * @param self Entity* Puntero doble donde se almacenará la entidad creada
  * @param old_number_data Número actual de componentes de la entidad
  * @param new_number_data Nuevo número de componentes deseado
- * @return Entity* Puntero a la entidad redimensionada, o NULL en caso de error
+ * @return Entity Puntero a la entidad redimensionada o NULL si falla la reasignación de memoria.
+ * @code
+ * Entity myEntity = createEntity(&myEntity, 2); // entidad de 2 componentes
+ * if (myEntity == NULL) {
+ *      printf("Entidad es NULL\n");
+ *      return 0;
+ * }
+ * reallocEntity(&entidad, 2, 5); // Redimensiona a 5 componentes
+ * @endcode
 */
-Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_data){
+Entity reallocEntity(Entity* self, size_t old_number_data, size_t new_number_data){
     DEBUG_PRINT(DEBUG_LEVEL_INFO,
         INIT_TYPE_FUNC_DBG(Entity*, reallocEntity)
             TYPE_DATA_DBG(Entity**, "self = %p")
@@ -195,18 +204,18 @@ Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_d
                 return NULL; // codigo que ejecutar
             , "Error: no se pudo reasignar la memoria debido a que realloc fallo\n"
         );
-        DEBUG_PRINT(DEBUG_LEVEL_INFO, "Datos redimnsionado a %zu Bytes\n", new_number_data);
+        DEBUG_PRINT(DEBUG_LEVEL_INFO, "Datos redimensionado a %zu Bytes\n", new_number_data);
         
         // poner los valores desconocidos unicamente en la nueva memoria redimensionaada
         memset(_self + sizeof(Component_t) * old_number_data, 
-            Unkownod, sizeof(Component_t) * (new_number_data - old_number_data));
+            Unknowned, sizeof(Component_t) * (new_number_data - old_number_data));
 
         // eliminar el antiguo final de la entidad
         *(uint16_t*)((void*)_self + ((sizeof(Component_t) * old_number_data) )) = 0x0000;
 
         // indicar el nuevo final de la entidad
         *(uint16_t*)((void*)_self + ((sizeof(Component_t) * new_number_data) )) = 0xffff;
-        return (Entity*)_self;
+        return (Entity)_self;
         report_error_ecs(
             false,  // si es false, se solicita que ocurra este raise
                 return NULL; // codigo que ejecutar
@@ -217,8 +226,12 @@ Entity* reallocEntity(Entity** self, size_t old_number_data, size_t new_number_d
 
 /**
  * @brief Libera la memoria de una entidad y sus componentes
- * 
  * @param entity Puntero a la entidad que se desea liberar
+ * @code
+ * Entity* myEntity = createEntity(&myEntity, 5);
+ * freeEntity(myEntity);
+ * myEntity = NULL; // Para evitar dangling pointers
+ * @endcode
  */
 void freeEntity(void* entity) {
     DEBUG_PRINT(DEBUG_LEVEL_INFO,
